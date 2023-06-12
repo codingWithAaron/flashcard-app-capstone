@@ -1,15 +1,30 @@
 import React from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
+import { Switch } from "react-router-dom/cjs/react-router-dom.min";
+import { Route } from "react-router-dom/cjs/react-router-dom";
+import Home from "../home/Home";
+import { useState, useEffect } from "react";
+import { listDecks } from "../utils/api";
 
 function Layout() {
+  const [decks, setDecks] = useState([])
+  useEffect(()=>{
+    listDecks()
+    .then(data => setDecks(data))
+}, [])
+
   return (
     <>
       <Header />
-      <div className="container">
-        {/* TODO: Implement the screen starting here */}
-        <NotFound />
-      </div>
+      <Switch>
+          <Route path="/">
+              <Home decks={decks}/>
+          </Route>
+          <Route path="/*">
+            <NotFound />
+          </Route>
+      </Switch>
     </>
   );
 }
