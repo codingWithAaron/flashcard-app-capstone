@@ -22,7 +22,7 @@ function Deck({deck}){
                             <Link className="text-light" to="#"> <AiFillEye/> View</Link>
                         </div>
                         <div className="btn btn-primary">
-                            <Link className="text-light" to="#"><BiBookBookmark/> Study</Link>
+                            <Link className="text-light" to={`/decks/${deck.id}/study`}><BiBookBookmark/> Study</Link>
                         </div>
                     </div>
                     <div className="btn btn-danger">

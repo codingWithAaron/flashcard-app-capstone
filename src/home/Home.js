@@ -16,9 +16,6 @@ function Home({decks}){
                         {decks.map((deck)=><Deck deck={deck} key={deck.id}/>)}
                     </div>
                 </Route>
-                <Route>
-
-                </Route>
             </Switch>
         </>
     )
