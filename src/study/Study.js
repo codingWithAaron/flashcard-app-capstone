@@ -14,13 +14,9 @@ function Study(){
     const history = useHistory()
     
     useEffect(()=>{
-        const abortController = new AbortController()
-        const signal = abortController.signal
-
-        readDeck(deckId, signal)
+        readDeck(deckId)
         .then(data => setEachDeck(data))
         .then(setIndex(0))
-
     },[])
     
     const allCards = eachDeck.cards
