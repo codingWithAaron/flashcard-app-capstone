@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import {FaPlus} from "react-icons/fa"
 import {Switch, Route} from "react-router-dom"
 
-function Home({decks}){
+function Home({decks, handleDelete}){
     return (
         <>
             <Switch>
@@ -13,7 +13,7 @@ function Home({decks}){
                         <Link className="btn btn-secondary"><FaPlus/>Create Deck</Link>
                     </div>
                     <div>
-                        {decks.map((deck)=><Deck deck={deck} key={deck.id}/>)}
+                        {decks.map((deck)=><Deck handleDelete={handleDelete} deck={deck} key={deck.id}/>)}
                     </div>
                 </Route>
             </Switch>

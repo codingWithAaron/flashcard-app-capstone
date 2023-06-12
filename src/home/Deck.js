@@ -5,7 +5,7 @@ import {BiBookBookmark} from "react-icons/bi"
 import {BsFillTrashFill} from "react-icons/bs"
 
 
-function Deck({deck}){
+function Deck({deck, handleDelete}){
     
 
     return (
@@ -25,9 +25,9 @@ function Deck({deck}){
                             <Link className="text-light" to={`/decks/${deck.id}/study`}><BiBookBookmark/> Study</Link>
                         </div>
                     </div>
-                    <div className="btn btn-danger">
+                    <div>
                         <div>
-                            <Link to="#"><BsFillTrashFill className="text-light"/></Link>
+                            <button className="btn btn-danger" onClick={()=>handleDelete(deck)}><BsFillTrashFill className="text-light"/></button>
                         </div>
                     </div>
                 </div>

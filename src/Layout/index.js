@@ -14,14 +14,21 @@ function Layout() {
   useEffect(()=>{
     listDecks()
     .then(data => setDecks(data))
-}, [])
+  }, [])
+
+  function handleDelete(deckToDelete){
+    const updatedDecks = decks.filter((deck)=>{
+      return deck !== deckToDelete
+    })
+    setDecks(updatedDecks)
+  }
 
   return (
     <>
       <Header />
       <Switch>
           <Route path="/" exact={true}>
-            <Home decks={decks}/>
+            <Home decks={decks} handleDelete={handleDelete}/>
           </Route>
           <Route path="/decks/:deckId/study">
             <Study decks={decks} />
