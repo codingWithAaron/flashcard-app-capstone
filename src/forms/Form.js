@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {Link, useHistory} from "react-router-dom"
+import { createDeck } from "../utils/api";
 
 function Form({setDecks, decks}){
     const history = useHistory()
@@ -20,10 +21,7 @@ function Form({setDecks, decks}){
 
     function handleSubmit(event){
         event.preventDefault()
-        setDecks([
-            ...decks,
-            formData
-        ])
+        createDeck(formData)
         setFormData(initialData)
         history.push("/")
     }

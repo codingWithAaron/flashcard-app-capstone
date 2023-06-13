@@ -84,20 +84,20 @@ function Study(){
     }else if(allCards && allCards.length <= 2){
         return (
         <>
-            <nav>
-                <ol className="breadcrumb">
-                     <li className="breadcrumb-item">
-                        {" "}
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="breadcrumb-item">
-                        {" "}
-                        <Link to={`/decks/${deckId}`}>{eachDeck.name}</Link>
-                    </li>
-                    <li className="breadcrumb-item">Study</li>
-                </ol>
-            </nav>
             <div className="container">
+                <nav>
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item">
+                            {" "}
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li className="breadcrumb-item">
+                            {" "}
+                            <Link to={`/decks/${deckId}`}>{eachDeck.name}</Link>
+                        </li>
+                        <li className="breadcrumb-item">Study</li>
+                    </ol>
+                </nav>
                 <div>
                     <h1>Study: {eachDeck.name}</h1>
                 </div>
