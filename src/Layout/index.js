@@ -10,6 +10,7 @@ import Study from "../study/Study";
 import {useHistory} from "react-router-dom"
 import CreateDeck from "../forms/CreateDeck";
 import DeckInfo from "../deck/DeckInfo";
+import { deleteDeck } from "../utils/api";
 
 function Layout() {
   const [decks, setDecks] = useState([])
@@ -21,16 +22,11 @@ function Layout() {
   }, [])
 
   function handleDelete(deckToDelete){
-    const updatedDecks = decks.filter((deck)=>{
-      return deck !== deckToDelete
-    })
-
     const confirm = window.confirm("Delete this deck? You will not be able to recover it.")
-
     if(confirm){
-      setDecks(updatedDecks)
-    }else{
-      history.push("/")
+      deleteDeck(deckToDelete)
+      .then(()=>listDecks())
+      .then(data => setDecks(data))
     }
   }
 

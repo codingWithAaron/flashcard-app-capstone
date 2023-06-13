@@ -27,7 +27,7 @@ function Deck({deck, handleDelete}){
                     </div>
                     <div>
                         <div>
-                            <button className="btn btn-danger" onClick={()=>handleDelete(deck)}><BsFillTrashFill className="text-light"/></button>
+                            <button className="btn btn-danger" onClick={()=>handleDelete(deck.id)}><BsFillTrashFill className="text-light"/></button>
                         </div>
                     </div>
                 </div>
