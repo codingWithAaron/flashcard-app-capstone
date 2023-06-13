@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { listDecks } from "../utils/api";
 import Study from "../study/Study";
 import {useHistory} from "react-router-dom"
+import CreateDeck from "../forms/CreateDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([])
@@ -38,6 +39,9 @@ function Layout() {
       <Switch>
           <Route path="/" exact={true}>
             <Home decks={decks} handleDelete={handleDelete}/>
+          </Route>
+          <Route path="/decks/new">
+            <CreateDeck />
           </Route>
           <Route path="/decks/:deckId/study">
             <Study decks={decks} />

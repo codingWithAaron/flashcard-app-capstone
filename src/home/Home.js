@@ -10,7 +10,7 @@ function Home({decks, handleDelete}){
             <Switch>
                 <Route path="/">
                     <div className="mb-2 container">
-                        <Link className="btn btn-secondary"><FaPlus/>Create Deck</Link>
+                        <Link to="/decks/new" className="btn btn-secondary"><FaPlus/>Create Deck</Link>
                     </div>
                     <div>
                         {decks.map((deck)=><Deck handleDelete={handleDelete} deck={deck} key={deck.id}/>)}
