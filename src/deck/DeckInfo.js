@@ -18,7 +18,7 @@ function DeckInfo(){
     },[])
 
     function handleDelete(cardToDelete){
-        const confirm = window.confirm("Test")
+        const confirm = window.confirm("Delete this card? You will not be able to recover it.")
         if(confirm){
             deleteCard(cardToDelete)
             .then(()=>readDeck(deckId))
