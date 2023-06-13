@@ -14,8 +14,6 @@ import { deleteDeck } from "../utils/api";
 
 function Layout() {
   const [decks, setDecks] = useState([])
-  const [cards, setCards] = useState([])
-  const history = useHistory()
   useEffect(()=>{
     listDecks()
     .then(data => setDecks(data))
