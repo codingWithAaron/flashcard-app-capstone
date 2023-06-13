@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { listDecks } from "../utils/api";
 import Study from "../study/Study";
 import {useHistory} from "react-router-dom"
-import CreateDeck from "../forms/CreateDeck";
+import CreateDeck from "../createDeck/CreateDeck";
 import DeckInfo from "../deck/DeckInfo";
 import { deleteDeck } from "../utils/api";
 
