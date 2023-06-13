@@ -1,7 +1,33 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { useState } from "react";
+import {Link, useHistory} from "react-router-dom"
 
-function Form(){
+function Form({setDecks, decks}){
+    const history = useHistory()
+    const initialData = {
+        name: "",
+        description: ""
+    }
+
+    const [formData, setFormData] = useState(initialData)
+
+    function handleChange(event){
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    function handleSubmit(event){
+        event.preventDefault()
+        setDecks([
+            ...decks,
+            formData
+        ])
+        setFormData(initialData)
+        history.push("/")
+    }
+
     return(
         <>
             <div className="container">
@@ -20,23 +46,23 @@ function Form(){
                 <div className="d-flex flex-column">
                     <form>
                         <div>
-                            <label>Name</label>
+                            <label htmlFor="name">Name</label>
                         </div>
                         <div>
-                            <input className="w-100" id="name" type="text" name="name" placeholder="Deck Name"></input>
+                            <input className="w-100" id="name" type="text" name="name" placeholder=" Deck Name" value={formData.name} onChange={handleChange}></input>
                         </div>
                         <div className="mt-2">
-                            <label>Description</label>
+                            <label htmlFor="description">Description</label>
                         </div>
                         <div>
-                            <textarea className="w-100" id="name" type="text" name="name" placeholder="Brief description of the deck"></textarea>
+                            <textarea className="w-100" id="description" type="text" name="description" placeholder=" Brief description of the deck" value={formData.description} onChange={handleChange}></textarea>
                         </div>
                         <div className=" d-flex flex-row mt-2">
                             <div className="mr-2">
-                                <button className="btn btn-secondary">Cancel</button>
+                                <Link to="/" className="btn btn-secondary">Cancel</Link>
                             </div>
                             <div>
-                                <button className="btn btn-primary" type="submit">Submit</button>
+                                <button onSubmit={handleSubmit} className="btn btn-primary" type="submit">Submit</button>
                             </div>
                         </div>          
                     </form>

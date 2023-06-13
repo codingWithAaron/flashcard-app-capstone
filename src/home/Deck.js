@@ -19,7 +19,7 @@ function Deck({deck, handleDelete}){
                 <div className="d-flex justify-content-between">
                     <div>
                         <div className="mr-2 btn btn-secondary">
-                            <Link className="text-light" to="#"> <AiFillEye/> View</Link>
+                            <Link className="text-light" to={`/decks/${deck.id}`}> <AiFillEye/> View</Link>
                         </div>
                         <div className="btn btn-primary">
                             <Link className="text-light" to={`/decks/${deck.id}/study`}><BiBookBookmark/> Study</Link>
