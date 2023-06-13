@@ -2,7 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom"
 import {BsFillTrashFill, BsPencilFill} from "react-icons/bs"
 
-function Card({card}){
+function Card({card, handleDelete}){
+
     return (
         <>
             <div className="d-flex flex-column container border">
@@ -16,7 +17,7 @@ function Card({card}){
                 </div>
                 <div className="d-flex flex-row-reverse mb-3">
                     <div>
-                        <button className="btn btn-danger"><BsFillTrashFill className="text-light"/></button>
+                        <button onClick={()=>handleDelete(card.id)} className="btn btn-danger"><BsFillTrashFill className="text-light"/></button>
                     </div>
                     <div>
                         <button className="text-light mr-2 btn btn-secondary"> <BsPencilFill/> Edit</button>

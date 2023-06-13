@@ -45,7 +45,7 @@ function Layout() {
             <CreateDeck decks={decks} setDecks={setDecks} />
           </Route>
           <Route path="/decks/:deckId" exact={true}>
-            <DeckInfo handleDelete={handleDelete} />
+            <DeckInfo />
           </Route>
           <Route path="/decks/:deckId/study">
             <Study decks={decks} />

@@ -1,13 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import {useParams, Link} from "react-router-dom"
-import { readDeck } from "../utils/api";
+import { deleteCard, deleteDeck, readDeck } from "../utils/api";
 import { useState } from "react";
 import {BiBookBookmark} from "react-icons/bi" 
 import {BsFillTrashFill, BsPencilFill} from "react-icons/bs"
 import Card from "./Card";
 
-function DeckInfo({handleDelete}){
+
+function DeckInfo(){
     const {deckId} = useParams()
     const [deck, setDeck] = useState([])
 
@@ -15,6 +16,16 @@ function DeckInfo({handleDelete}){
         readDeck(deckId)
         .then(data => setDeck(data))
     },[])
+
+    function handleDelete(cardToDelete){
+        const confirm = window.confirm("Test")
+        if(confirm){
+            deleteCard(cardToDelete)
+            .then(()=>readDeck(deckId))
+            .then(data => setDeck(data))
+        }
+    }
+
 
     if(deck && deck.cards){
         return (
@@ -37,7 +48,7 @@ function DeckInfo({handleDelete}){
                                 <Link className="text-light" to="#"> <BsPencilFill/> Edit</Link>
                             </div>
                             <div className="btn btn-primary">
-                                <Link className="text-light" to="#"><BiBookBookmark/> Study</Link>
+                                <Link className="text-light" to={`/decks/${deckId}/study`}><BiBookBookmark/> Study</Link>
                             </div>
                         </div>
                         <div>
@@ -48,7 +59,7 @@ function DeckInfo({handleDelete}){
                         <h2>Cards</h2>
                     </div>
                     <div>
-                        {deck.cards.map((card)=> <Card card={card} />)}
+                        {deck.cards.map((card)=> <Card handleDelete={handleDelete} card={card} />)}
                     </div>
                 </div>
             </>
