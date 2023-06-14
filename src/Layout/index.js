@@ -11,6 +11,7 @@ import {useHistory} from "react-router-dom"
 import CreateDeck from "../createDeck/CreateDeck";
 import DeckInfo from "../deck/DeckInfo";
 import { deleteDeck } from "../utils/api";
+import EditDeck from "../editDeck/EditDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([])
@@ -35,13 +36,16 @@ function Layout() {
           <Route path="/" exact={true}>
             <Home decks={decks} handleDelete={handleDelete}/>
           </Route>
-          <Route path="/decks/new">
+          <Route path="/decks/new" exact={true}>
             <CreateDeck decks={decks} setDecks={setDecks} />
           </Route>
           <Route path="/decks/:deckId" exact={true}>
             <DeckInfo />
           </Route>
-          <Route path="/decks/:deckId/study">
+          <Route path="/decks/:deckId/edit" exact={true}>
+            <EditDeck />
+          </Route>
+          <Route path="/decks/:deckId/study" exact={true}>
             <Study decks={decks} />
           </Route>
           <Route path="/*" exact>

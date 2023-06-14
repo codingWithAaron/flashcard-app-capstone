@@ -45,7 +45,7 @@ function DeckInfo(){
                     <div className="d-flex justify-content-between">
                         <div>
                             <div className="mr-2 btn btn-secondary">
-                                <Link className="text-light" to="#"> <BsPencilFill/> Edit</Link>
+                                <Link className="text-light" to={`/decks/${deckId}/edit`}> <BsPencilFill/> Edit</Link>
                             </div>
                             <div className="btn btn-primary">
                                 <Link className="text-light" to={`/decks/${deckId}/study`}><BiBookBookmark/> Study</Link>
@@ -59,7 +59,7 @@ function DeckInfo(){
                         <h2>Cards</h2>
                     </div>
                     <div>
-                        {deck.cards.map((card)=> <Card handleDelete={handleDelete} card={card} />)}
+                        {deck.cards.map((card)=> <Card handleDelete={handleDelete} card={card} key={card.id} />)}
                     </div>
                 </div>
             </>
