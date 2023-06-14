@@ -68,13 +68,13 @@ function Study(){
                         <div className="mt-3">
                             <h3>{`Card ${index + 1} of ${allCards.length} `}</h3>
                         </div>
-                        {flip ? <p>{card.front}</p> : <p>{card.back}</p>}
+                        {flip ? <p>Front: {card.front}</p> : <p> Back: {card.back}</p>}
                         <div className="d-flex mb-3">
                             <div className="mr-2">
                                 <button className="text-light btn btn-secondary" onClick={handleFlipClick}>Flip</button>
                             </div>
                             <div>
-                                <button className="text-light btn-primary btn" onClick={handleNextClick}>Next</button>
+                                {!flip ? <button className="text-light btn-primary btn" onClick={handleNextClick}>Next</button> : ""}
                             </div>
                         </div>
                     </div>
