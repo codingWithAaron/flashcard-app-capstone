@@ -12,6 +12,7 @@ import DeckInfo from "../deck/DeckInfo";
 import { deleteDeck } from "../utils/api";
 import EditDeck from "../editDeck/EditDeck";
 import AddCard from "../cards/AddCard";
+import EditCard from "../cards/EditCard";
 
 function Layout() {
   const [decks, setDecks] = useState([])
@@ -48,6 +49,9 @@ function Layout() {
           </Route>
           <Route path="/decks/:deckId/cards/new" exact={true}>
             <AddCard />
+          </Route>
+          <Route path="/decks/:deckId/cards/:cardId/edit" exact={true}>
+            <EditCard />
           </Route>
           <Route path="/decks/:deckId/study" exact={true}>
             <Study decks={decks} />

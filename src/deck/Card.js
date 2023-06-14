@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 import {BsFillTrashFill, BsPencilFill} from "react-icons/bs"
 
-function Card({card, handleDelete}){
+function Card({card, handleDelete, deckId}){
 
     return (
         <>
@@ -20,7 +20,7 @@ function Card({card, handleDelete}){
                         <button onClick={()=>handleDelete(card.id)} className="btn btn-danger"><BsFillTrashFill className="text-light"/></button>
                     </div>
                     <div>
-                        <button className="text-light mr-2 btn btn-secondary"> <BsPencilFill/> Edit</button>
+                        <Link  to={`/decks/${deckId}/cards/${card.id}/edit`} className="text-light mr-2 btn btn-secondary"> <BsPencilFill/> Edit</Link>
                     </div>                     
                 </div>
             </div>

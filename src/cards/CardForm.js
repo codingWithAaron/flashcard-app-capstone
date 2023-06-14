@@ -4,21 +4,14 @@ import {Link} from "react-router-dom"
 import { readDeck } from "../utils/api";
 import { createCard } from "../utils/api";
 
-function CardForm({deckId, addHeader, initialData}){
+function CardForm({deckId, addHeader, addBreadcrumbHeader, handleSubmit, setFormData, formData}){
     const [currentDeck, setCurrentDeck] = useState([])
-    const [formData, setFormData] = useState(initialData)
 
     function handleChange(event){
         setFormData({
             ...formData,
             [event.target.name]: event.target.value
         })
-    }
-
-    function handleSubmit(event){
-        event.preventDefault()
-        createCard(deckId, formData)
-        setFormData(initialData)
     }
 
     useEffect(()=>{
@@ -40,7 +33,7 @@ function CardForm({deckId, addHeader, initialData}){
                                  {" "}
                                 <Link to={`/decks/${deckId}`}>{currentDeck.name}</Link>
                             </li>
-                            <li className="breadcrumb-item">Add Card</li>
+                            <li className="breadcrumb-item">{addBreadcrumbHeader}</li>
                         </ol>
                     </nav>
                     <div>

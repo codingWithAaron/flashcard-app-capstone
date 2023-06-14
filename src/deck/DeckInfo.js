@@ -63,7 +63,7 @@ function DeckInfo(){
                         <h2>Cards</h2>
                     </div>
                     <div>
-                        {deck.cards.map((card)=> <Card handleDelete={handleDelete} card={card} key={card.id} />)}
+                        {deck.cards.map((card)=> <Card handleDelete={handleDelete} card={card} key={card.id} deckId={deckId} />)}
                     </div>
                 </div>
             </>
