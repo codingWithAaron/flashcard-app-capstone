@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import {useParams, Link} from "react-router-dom"
-import { deleteCard, deleteDeck, readDeck } from "../utils/api";
+import { deleteCard, readDeck } from "../utils/api";
 import { useState } from "react";
 import {BiBookBookmark} from "react-icons/bi" 
 import {BsFillTrashFill, BsPencilFill} from "react-icons/bs"
+import {FiPlus} from "react-icons/fi"
 import Card from "./Card";
 
 
@@ -47,8 +48,11 @@ function DeckInfo(){
                             <div className="mr-2 btn btn-secondary">
                                 <Link className="text-light" to={`/decks/${deckId}/edit`}> <BsPencilFill/> Edit</Link>
                             </div>
-                            <div className="btn btn-primary">
+                            <div className="btn btn-primary mr-2">
                                 <Link className="text-light" to={`/decks/${deckId}/study`}><BiBookBookmark/> Study</Link>
+                            </div>
+                            <div className="btn btn-primary">
+                                <Link className="text-light" to={`/decks/${deckId}/cards/new`}><FiPlus/> Add Cards</Link>
                             </div>
                         </div>
                         <div>

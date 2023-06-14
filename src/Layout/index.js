@@ -7,15 +7,15 @@ import Home from "../home/Home";
 import { useState, useEffect } from "react";
 import { listDecks } from "../utils/api";
 import Study from "../study/Study";
-import {useHistory} from "react-router-dom"
 import CreateDeck from "../createDeck/CreateDeck";
 import DeckInfo from "../deck/DeckInfo";
 import { deleteDeck } from "../utils/api";
 import EditDeck from "../editDeck/EditDeck";
+import AddCard from "../cards/AddCard";
 
 function Layout() {
   const [decks, setDecks] = useState([])
-  
+
   useEffect(()=>{
     listDecks()
     .then(data => setDecks(data))
@@ -45,6 +45,9 @@ function Layout() {
           </Route>
           <Route path="/decks/:deckId/edit" exact={true}>
             <EditDeck />
+          </Route>
+          <Route path="/decks/:deckId/cards/new" exact={true}>
+            <AddCard />
           </Route>
           <Route path="/decks/:deckId/study" exact={true}>
             <Study decks={decks} />
