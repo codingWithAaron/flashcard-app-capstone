@@ -15,6 +15,7 @@ import EditDeck from "../editDeck/EditDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([])
+  
   useEffect(()=>{
     listDecks()
     .then(data => setDecks(data))

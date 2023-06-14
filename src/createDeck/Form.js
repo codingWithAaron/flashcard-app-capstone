@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {Link, useHistory} from "react-router-dom"
-import { createDeck } from "../utils/api";
+import { createDeck, listDecks } from "../utils/api";
 
 function Form({setDecks, decks}){
     const history = useHistory()
@@ -22,8 +22,10 @@ function Form({setDecks, decks}){
     function handleSubmit(event){
         event.preventDefault()
         createDeck(formData)
-        setFormData(initialData)
-        history.push("/")
+        .then(()=>setFormData(initialData))
+        .then(()=>listDecks())
+        .then(data => setDecks(data))
+        .then(()=>history.push("/"))
     }
 
     return(
@@ -42,7 +44,7 @@ function Form({setDecks, decks}){
                     <h2>Create Deck</h2>
                 </div>
                 <div className="d-flex flex-column">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="name">Name</label>
                         </div>
@@ -60,7 +62,7 @@ function Form({setDecks, decks}){
                                 <Link to="/" className="btn btn-secondary">Cancel</Link>
                             </div>
                             <div>
-                                <button onSubmit={handleSubmit} className="btn btn-primary" type="submit">Submit</button>
+                                <button className="btn btn-primary" type="submit">Submit</button>
                             </div>
                         </div>          
                     </form>
