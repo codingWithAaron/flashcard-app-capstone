@@ -108,7 +108,7 @@ function Study(){
                     <p>{`You need at least 3 cards to study. There are ${allCards.length} cards in this deck.`}</p>
                 </div>
                 <div className="btn btn-primary">
-                    <Link to="#" className="text-light"><FaPlus/> Add Cards</Link>
+                    <Link to={`/decks/${deckId}/cards/new`} className="text-light"><FaPlus/> Add Cards</Link>
                 </div>
             </div>
         </>
