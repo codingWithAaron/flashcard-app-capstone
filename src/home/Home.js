@@ -12,6 +12,7 @@ function Home({decks, handleDelete}){
                     <div className="mb-2 container">
                         <Link to="/decks/new" className="btn btn-secondary"><FiPlus/> Create Deck</Link>
                     </div>
+                    {/* Loops through the deck array to display each deck on the home page using the <Deck/> component */}
                     <div>
                         {decks.map((deck)=><Deck handleDelete={handleDelete} deck={deck} key={deck.id}/>)}
                     </div>

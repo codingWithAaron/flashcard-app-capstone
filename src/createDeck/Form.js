@@ -4,6 +4,7 @@ import {Link, useHistory} from "react-router-dom"
 import { createDeck, listDecks } from "../utils/api";
 
 function Form({setDecks, decks}){
+
     const history = useHistory()
     const initialData = {
         name: "",
@@ -12,6 +13,7 @@ function Form({setDecks, decks}){
 
     const [formData, setFormData] = useState(initialData)
 
+    // handleChange() function manages the data when text is input into the forms
     function handleChange(event){
         setFormData({
             ...formData,
@@ -19,6 +21,7 @@ function Form({setDecks, decks}){
         })
     }
 
+    // handleSubmit() function will make and API call to create a new deck, then reset the form, then make API call to get updated deck list, set that data to variable, and take you to the home page.
     function handleSubmit(event){
         event.preventDefault()
         createDeck(formData)
@@ -31,6 +34,7 @@ function Form({setDecks, decks}){
     return(
         <>
             <div className="container">
+                {/* Breadcrumb navigation bar */}
                 <nav>
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">
@@ -40,6 +44,7 @@ function Form({setDecks, decks}){
                         <li className="breadcrumb-item">Create Deck</li>
                     </ol>
                 </nav>
+                {/* Main body of the form */}
                 <div>
                     <h2>Create Deck</h2>
                 </div>

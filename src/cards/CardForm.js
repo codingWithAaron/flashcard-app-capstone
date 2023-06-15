@@ -7,6 +7,7 @@ import { createCard } from "../utils/api";
 function CardForm({deckId, addHeader, addBreadcrumbHeader, handleSubmit, setFormData, formData}){
     const [currentDeck, setCurrentDeck] = useState([])
 
+    // handleChange() function handles when the text is input into the form, and stores the data
     function handleChange(event){
         setFormData({
             ...formData,
@@ -14,6 +15,7 @@ function CardForm({deckId, addHeader, addBreadcrumbHeader, handleSubmit, setForm
         })
     }
 
+    // Makes API call to get current deck data
     useEffect(()=>{
         readDeck(deckId)
         .then(data => setCurrentDeck(data))
@@ -23,6 +25,7 @@ function CardForm({deckId, addHeader, addBreadcrumbHeader, handleSubmit, setForm
         return (
             <>
                 <div className="container">
+                    {/* Breadcrumb navigation bar */}
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
@@ -36,10 +39,12 @@ function CardForm({deckId, addHeader, addBreadcrumbHeader, handleSubmit, setForm
                             <li className="breadcrumb-item">{addBreadcrumbHeader}</li>
                         </ol>
                     </nav>
+                    {/* Main body of the page */}
                     <div>
                         <h2>{addHeader}</h2>
                     </div>
                     <div className="d-flex flex-column">
+                        {/* This is the form to create or edit a card */}
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="front">Front</label>

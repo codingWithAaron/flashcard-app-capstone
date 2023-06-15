@@ -15,13 +15,16 @@ import AddCard from "../cards/AddCard";
 import EditCard from "../cards/EditCard";
 
 function Layout() {
+  // Define useState() variables to store listDecks()
   const [decks, setDecks] = useState([])
 
+  // Makes API call to get list of decks
   useEffect(()=>{
     listDecks()
     .then(data => setDecks(data))
   }, [])
 
+// handleDelete() function that gets passed down to <Home/> component to delete decks
   function handleDelete(deckToDelete){
     const confirm = window.confirm("Delete this deck? You will not be able to recover it.")
     if(confirm){

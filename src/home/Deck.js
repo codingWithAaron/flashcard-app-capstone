@@ -7,6 +7,7 @@ import {BsFillTrashFill} from "react-icons/bs"
 
 function Deck({deck, handleDelete}){
     
+    // Returns and displays each individual deck
 
     return (
         <>

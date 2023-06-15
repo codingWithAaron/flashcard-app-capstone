@@ -6,6 +6,7 @@ import { readDeck, updateDeck } from "../utils/api";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function EditDeckForm({deckId}){
+    // Defines initial variables to store data of current deck
     const initialData = {
         id: deckId,
         name: "",
@@ -14,11 +15,13 @@ function EditDeckForm({deckId}){
     const [currentDeck, setCurrentDeck] = useState(initialData)
     const history = useHistory()
     
+    // Makes API call to get data of current deck and stores it in currentDeck variable
     useEffect(()=>{
         readDeck(deckId)
         .then(data => setCurrentDeck(data))
     },[])
 
+    // handleChange() function handles the data when text is put into the form
     function handleChange(event){
         setCurrentDeck({
             ...currentDeck,
@@ -26,6 +29,7 @@ function EditDeckForm({deckId}){
         })
     }
 
+    // handleSubmit() function will make a API call to update the deck with the info typed into the form, then send you back to the Deck page (DeckInfo)
     function handleSubmit(event){
         event.preventDefault()
         updateDeck(currentDeck)
@@ -38,6 +42,7 @@ function EditDeckForm({deckId}){
         return (
             <>
                 <div className="container">
+                    {/* Breadcrumb navigation bar */}
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
@@ -55,6 +60,7 @@ function EditDeckForm({deckId}){
                         <h2>Edit Deck</h2>
                     </div>
                     <div className="d-flex flex-column">
+                        {/* Main body for the form */}
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="name">Name</label>
