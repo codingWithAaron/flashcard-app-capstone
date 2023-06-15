@@ -29,11 +29,16 @@ function Study(){
     }
 
     // handles when you click the next button, incrementing the index by one, which will go to the next card in the array, also sets flip back to true so it shows the front info
+    // The if statement is triggered when the user gets to the last card and clicks next, which will propt a window that asks if they want to restart from the beginning or cancel and go to the home page
     function handleNextClick(){
-        setIndex((prevIndex)=>{
-            return prevIndex + 1
-        })
-        setFlip(true)
+        if(allCards && index >= allCards.length - 1){
+            return handleRestart()
+        }else{
+            setIndex((prevIndex)=>{
+                return prevIndex + 1
+            })
+            setFlip(true)
+        }
     }
 
     // handles when the user gets to the last card and gives them the option to start over from the beginning or press cancel and go back to the home page
@@ -48,7 +53,7 @@ function Study(){
         } 
     }
     
-    if(allCards && index < allCards.length && allCards.length >= 3){
+    if(allCards && allCards.length >= 3){
         const card = allCards && allCards[index]
         return (
             <>
@@ -124,10 +129,7 @@ function Study(){
                 </div>
             </div>
         </>
-     )
-
-    }else if(allCards){
-        return handleRestart()
+        )
     }
     return <p>Loading...</p>
 }
